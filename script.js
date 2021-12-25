@@ -16,5 +16,31 @@ function computerPlay(){
 
 // playerSelection
 function playRound(playerSelection, computerSelection) {
-    
+    if (playerSelection == computerSelection) {
+        return "It's a draw, try again";
+    } else {
+        while (playerSelection == "Rock") {
+            if (computerSelection == "Paper") {
+                return "You lose";
+            }
+            else if (computerSelection == "Scissors") {
+                return "You win";
+            }
+        }
+        while (playerSelection = "Paper") {
+            if (computerSelection == "Rock"){
+                return "You win";
+            } else if (computerSelection == "Scissors") {
+                return "You lose";
+            }
+        }
+        while (playerSelection == "Scissors") {
+            if (computerSelection == "Paper") {
+                return "You win";
+            }
+            else if (computerSelection == "Rock") {
+                return "You lose";
+            }
+        }
+    }
 }
