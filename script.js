@@ -1,84 +1,86 @@
-// Computer play - make a function that randomly selects Rock, paper, or scissors
-function computerPlay(){
+// store variables
+let r = "rock";
+let s = "scissors";
+let p = "paper";
+let br = "<br>";
+let winner = "Win Player selected "
+let loser = "Lose Player selected "
+let compSelect = " and Computer selected "
+let wins = 0;
+let loses = 0;
 
-    // pick a random number between 1 - 3
-    let randomInt = Math.floor((Math.random()*3)+1);
+// make game a function
+function game(){
+    // computerInput
+    let random = Math.random();
+    if (random <= 0.33){
+        computerInput = "rock"}
+    if (random <= 0.66 && random >= 0.33){
+        computerInput = "paper"}
+    if (random >= 0.66){
+        computerInput = "scissors"}
 
-    // correspond randomInt to options
-    if (randomInt == 1){
-        document.write("ROCK");
-    } else if (randomInt == 2){
-        document.write("PAPER");
-    } else {
-        document.write("SCISSORS");
-        }
-    }   
+    // playerInput
+    let playerPrompt = prompt("Rock, Paper, or Scissors?");
+    let playerInputLow = playerPrompt.toLowerCase();
 
-// playerSelection - function to let player pick option
-function playRound(playerSelection, computerSelection) {
-
-    // draw if it's a tie
-    if (playerSelection == computerSelection) {
-        document.write("It's a draw");
-    } else {
-
-        // player picks rock
-        if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
-            document.write("Player: Rock, Computer: Scissors - You Win!");
-        } else if (playerSelection == "ROCK" && computerSelection == "PAPER") {
-            document.write("Player: Rock, Computer: Paper - You Lose");
-        }
-
-        // player picks paper
-        if (playerSelection == "PAPER" && computerSelection == "ROCK") {
-            document.write("Player: Paper, Computer: Rock - You Win!");
-        } else if (playerSelection == "PAPER" && computerSelection == "SCISSORS") {
-            document.write("Player: Paper, Computer: Scissors - You Lose");
-        }
-
-        // player paicks scissors
-        if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
-            document.write("Player: Scissors, Computer: Paper - You Win!");
-        } else if (playerSelection == "SCISSORS" && computerSelection == "ROCK") {
-            document.write("Player: Scissors, Computer: Rock - You Lose");
+    // compare 2 function
+    function playRound(playerInput,computerInput){
+        if (playerInput == computerInput) {
+            document.write("Same please try again" + br)} 
+        else {
+    // player input paper
+            if(playerInput == p && computerInput == r){
+                document.write(winner + playerInput
+                                + compSelect + computerInput
+                                + br);
+                wins++;}
+            if(playerInput == p && computerInput == s){
+                document.write(loser + playerInput 
+                                + compSelect + computerInput
+                                + br);
+                loses++;}
+    // player inputs rock
+            if(playerInput == r && computerInput == s){
+                document.write(winner + playerInput
+                                + compSelect + computerInput
+                                + br);
+                wins++;}
+            if(playerInput == r && computerInput == p){
+                document.write(loser + playerInput
+                                + compSelect + computerInput
+                                + br);
+                loses++;}
+    // player inputs scissors
+            if(playerInput == s && computerInput == p){
+                document.write(winner + playerInput
+                                + compSelect + computerInput
+                                + br);
+                wins++;}
+            if(playerInput == s && computerInput == r){
+                document.write(loser + playerInput
+                            + compSelect + computerInput
+                            + br);
+                loses++;}
         }
     }
+    playRound(playerInputLow,computerInput);
 }
 
-// Prompt for player to input
-let playerInput = prompt("Rock, Paper, or Scissors?");
-
-// upper case so cap doesn't matter
-let playerInputCaps = playerInput.toUpperCase();
-playRound(playerInputCaps,"Rock");
-
-
-// playerSelection
-// function playRound(playerSelection, computerSelection) {
-//     if (playerSelection == computerSelection) {
-//         return "It's a draw, try again";
-//     } else {
-//         while (playerSelection == "Rock") {
-//             if (computerSelection == "Paper") {
-//                 return "You lose";
-//             }
-//             else if (computerSelection == "Scissors") {
-//                 return "You win";
-//             }
-//         }
-//         while (playerSelection = "Paper") {
-//             if (computerSelection == "Rock"){
-//                 return "You win";
-//             } else if (computerSelection == "Scissors") {
-//                 return "You lose";
-//             }
-//         }
-//         while (playerSelection == "Scissors") {
-//             if (computerSelection == "Paper") {
-//                 return "You win";
-//             }
-//             else if (computerSelection == "Rock") {
-//                 return "You lose";
-//             }
+// have game run 5 times
+function set(){
+    game();
+    game();
+    game();
+    game();
+    game();
+    if (wins>loses){
+        document.write("Player wins!" + br + "Wins = " + wins)}
+    if (loses>wins) {
+        document.write("Player loses" + br + "loses = " + loses)}
+    if (wins==loses) {
+        document.write("It's a tie!" + "Wins = " + wins + " Loses = " + loses)}
+}
+set();
 
 
